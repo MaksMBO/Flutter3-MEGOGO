@@ -21,7 +21,6 @@ class CardsScrollSide extends StatelessWidget {
 
     switch (type) {
       case 'tv':
-
         defaultHeight = tempWidth > 450 ? tempHeight * 0.5 : tempHeight * 0.25;
         defaultWidth = tempWidth > 450 ? tempWidth * 0.33 : tempWidth * 0.64;
         break;

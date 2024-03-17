@@ -8,9 +8,9 @@ class LogoBar extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Padding(
-      padding: EdgeInsets.all(16.0),
-      child: Row(
+    return Container(
+      padding: const EdgeInsets.all(16.0),
+      child: const Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Expanded(
