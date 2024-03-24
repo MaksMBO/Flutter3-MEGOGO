@@ -16,7 +16,7 @@ class HomePageWidget extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          const LogoBar(),
+          // const LogoBar(),
           const MainCardBlock(),
           _buildSections(),
           const SizedBox(height: 32),

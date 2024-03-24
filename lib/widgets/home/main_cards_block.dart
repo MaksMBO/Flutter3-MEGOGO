@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../data/data.dart';
-import 'main_card.dart';
+import 'card_column.dart';
 
 class MainCardBlock extends StatelessWidget {
   const MainCardBlock({super.key});
@@ -14,30 +14,17 @@ class MainCardBlock extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Expanded(
-            child: Column(
-              children: cardDataList.sublist(0, 4).map((data) {
-                return MainCard(
-                  padding: const EdgeInsets.only(
-                      left: 16.0, right: 4.0, bottom: 8.0),
-                  increaseBy:
-                      data.containsKey('increaseBy') ? data['increaseBy'] : 1.0,
-                  img: data['img'],
-                  title: data['title'],
-                );
-              }).toList(),
+            child: CardColumn(
+              cardDataList: cardDataList.sublist(0, 4),
+              padding:
+                  const EdgeInsets.only(left: 16.0, right: 4.0, bottom: 8.0),
             ),
           ),
           Expanded(
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: cardDataList.sublist(4).map((data) {
-                return MainCard(
-                  padding: const EdgeInsets.only(
-                      left: 4.0, right: 16.0, bottom: 8.0),
-                  img: data['img'],
-                  title: data['title'],
-                );
-              }).toList(),
+            child: CardColumn(
+              cardDataList: cardDataList.sublist(4),
+              padding:
+                  const EdgeInsets.only(left: 4.0, right: 16.0, bottom: 8.0),
             ),
           ),
         ],
@@ -45,3 +32,8 @@ class MainCardBlock extends StatelessWidget {
     );
   }
 }
+
+
+
+
+

@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-import 'one_navigation_destination.dart';
-
 class MyNavigationBarTheme extends StatelessWidget {
   final int currentPageIndex;
   final ValueChanged<int> onDestinationSelected;
@@ -14,32 +12,29 @@ class MyNavigationBarTheme extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return NavigationBarTheme(
-      data: NavigationBarThemeData(
-        labelTextStyle: MaterialStateProperty.resolveWith<TextStyle>(
-          (Set<MaterialState> states) =>
-              const TextStyle(fontSize: 0, height: 0),
-        ),
+    return Theme(
+      data: Theme.of(context).copyWith(
+        splashColor: const Color(0xFF24BDAB),
+        highlightColor: const Color(0xFF24BDAB),
+
       ),
-      child: NavigationBar(
-        height: 60,
+      child: BottomNavigationBar(
+        type: BottomNavigationBarType.fixed,
         backgroundColor: const Color(0xFF1A1A1A),
-        onDestinationSelected: onDestinationSelected,
-        overlayColor: MaterialStateProperty.resolveWith(
-          (states) => const Color(0xFF24BDAB),
-        ),
-        indicatorColor: const Color(0x00000000),
-        selectedIndex: currentPageIndex,
-        destinations: const <Widget>[
-          OneNavigationDestination(
-            title: "Головна",
-            icon: Icons.home,
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: 'Головна',
           ),
-          OneNavigationDestination(
-            title: "Пошук",
-            icon: Icons.search,
+          BottomNavigationBarItem(
+            icon: Icon(Icons.search),
+            label: 'Пошук',
           ),
         ],
+        currentIndex: currentPageIndex,
+        selectedItemColor: Colors.white,
+        unselectedItemColor: const Color(0xFF757575),
+        onTap: onDestinationSelected,
       ),
     );
   }

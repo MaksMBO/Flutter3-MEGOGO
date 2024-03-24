@@ -102,39 +102,57 @@ final List<Json> cardDataList = [
   {
     'img': 'assets/img/chanelTv.jpg',
     'title': "ТЕЛЕКАНАЛИ",
+    'subtitle':
+        "Поглиблене занурення у світ телебачення: від ексклюзивних новин до захопливих шоу.",
     'increaseBy': 2.0,
   },
   {
     'img': 'assets/img/got.jpg',
     'title': "СЕРІАЛИ",
+    'subtitle':
+        "Інтригуючі історії, що тримають в напрузі - від епічних фентезі до захопливих детективів."
   },
   {
     'img': 'assets/img/1984.jpg',
     'title': "АУДІО",
+    'subtitle':
+        "Аудіоспектаклі, подкасти та звукові книги, які переносять вас у світ фантазії та знань."
   },
   {
     'img': 'assets/img/discovery.png',
     'title': "DISCOVERY+",
+    'subtitle':
+        "Відкрийте для себе найновіші відеоекспедиції та дослідження на платформі Discovery+."
   },
   {
     'img': 'assets/img/films.jpg',
     'title': "ФІЛЬМИ",
+    'subtitle':
+        "Шедеври кінематографу в вашому кишені: від класики до найсвіжіших прем'єр."
   },
   {
     'img': 'assets/img/cat.jpg',
     'title': "МУЛЬТФІЛЬМИ",
+    'subtitle':
+        "Світ магії, пригод та сміху для малюків та дорослих - у кожній мультяшці."
   },
   {
     'img': 'assets/img/show.jpg',
     'title': "ШОУ",
+    'subtitle':
+        "Вечір сміху, емоційне занурення та несподівані враження - це все про наші розважальні шоу."
   },
   {
     'img': 'assets/img/sport.jpg',
     'title': "СПОРТ",
+    'subtitle':
+        "Адреналін та емоції на максимумі: від найгостріших спортивних подій до ексклюзивних інтерв'ю."
   },
   {
     'img': 'assets/img/educate.jpg',
     'title': "ОСВІТА",
+    'subtitle':
+        "Вивчайте, досліджуйте та розвивайтеся: найкращі освітні ресурси та контент на вашій долоні."
   },
 ];
 
@@ -149,4 +167,10 @@ final List<Json> sections = [
   },
   {'title': 'Серіали НБО', 'type': 'films', 'data': data['films']},
   {'title': 'Фільми на слух', 'type': 'onlyAudio', 'data': data['onlyAudio']},
+];
+
+final List<Json> items = [
+  {'title': 'RM-56 [ChromeCast]'},
+  {'title': 'AATTM-34 [ChromeCast]'},
+  {'title': 'BT-456 [ChromeCast]'},
 ];
