@@ -10,6 +10,18 @@ class HomeScreen extends StatefulWidget {
   State<HomeScreen> createState() => _HomeScreenState();
 }
 
+const pages = [
+  HomePageWidget(),
+  SingleChildScrollView(
+    child: Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: <Widget>[
+        const SizedBox(height: 32),
+      ],
+    ),
+  )
+];
+
 class _HomeScreenState extends State<HomeScreen> {
   int currentPageIndex = 0;
 
@@ -28,7 +40,7 @@ class _HomeScreenState extends State<HomeScreen> {
           });
         },
       ),
-      body: const HomePageWidget(),
+      body: pages[currentPageIndex],
     );
   }
 }
