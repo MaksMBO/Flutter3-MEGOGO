@@ -6,21 +6,39 @@ import '../widgets/navBar/my_navigation_bar_theme.dart';
 import '../widgets/search/search_page_widget.dart';
 
 final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+const page = [
+  HomePageWidget(),
+  SearchWidget(),
+];
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
   @override
-  State<HomeScreen> createState() => _HomeScreenState();
+  _HomeScreenState createState() => _HomeScreenState();
 }
 
-const pages = [
-  HomePageWidget(),
-  SearchWidget(),
-];
+class _HomeScreenState extends State<HomeScreen>
+    with SingleTickerProviderStateMixin {
+  late TabController _tabController;
+  int _currentIndex = 0;
 
-class _HomeScreenState extends State<HomeScreen> {
-  int currentPageIndex = 0;
+  @override
+  void initState() {
+    super.initState();
+    _tabController = TabController(length: 2, vsync: this);
+    _tabController.addListener(() {
+      setState(() {
+        _currentIndex = _tabController.index;
+      });
+    });
+  }
+
+  @override
+  void dispose() {
+    _tabController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -49,14 +67,13 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
       endDrawer: const CustomDrawer(),
       bottomNavigationBar: MyNavigationBarTheme(
-        currentPageIndex: currentPageIndex,
-        onDestinationSelected: (int index) {
-          setState(() {
-            currentPageIndex = index;
-          });
-        },
+        tabController: _tabController,
+        currentIndex: _currentIndex,
       ),
-      body: pages[currentPageIndex],
+      body: TabBarView(
+        controller: _tabController,
+        children: page,
+      ),
     );
   }
 }

@@ -174,3 +174,5 @@ final List<Json> items = [
   {'title': 'AATTM-34 [ChromeCast]'},
   {'title': 'BT-456 [ChromeCast]'},
 ];
+
+const List<Color> myColors = [Colors.white, Color(0xFF757575)];

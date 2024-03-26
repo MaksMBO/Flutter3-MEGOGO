@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
 
+import '../../data/data.dart';
+
 class MyNavigationBarTheme extends StatelessWidget {
-  final int currentPageIndex;
-  final ValueChanged<int> onDestinationSelected;
+  final TabController tabController;
+  final int currentIndex;
 
   const MyNavigationBarTheme({
     super.key,
-    required this.currentPageIndex,
-    required this.onDestinationSelected,
+    required this.tabController,
+    required this.currentIndex,
   });
 
   @override
@@ -16,25 +18,52 @@ class MyNavigationBarTheme extends StatelessWidget {
       data: Theme.of(context).copyWith(
         splashColor: const Color(0xFF24BDAB),
         highlightColor: const Color(0xFF24BDAB),
-
+        bottomNavigationBarTheme: const BottomNavigationBarThemeData(
+          selectedLabelStyle: TextStyle(fontSize: 0),
+          unselectedLabelStyle: TextStyle(fontSize: 0),
+        ),
       ),
       child: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
         backgroundColor: const Color(0xFF1A1A1A),
-        items: const <BottomNavigationBarItem>[
+        items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Головна',
+            icon: SizedBox(
+              child: Column(
+                children: [
+                  Icon(Icons.home,
+                      color: currentIndex == 0 ? myColors[0] : myColors[1]),
+                  Text(
+                    "Головна",
+                    style: TextStyle(
+                        color: currentIndex == 0 ? myColors[0] : myColors[1]),
+                  ),
+                ],
+              ),
+            ),
+            label: '',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.search),
-            label: 'Пошук',
+            icon: SizedBox(
+              child: Column(
+                children: [
+                  Icon(Icons.search,
+                      color: currentIndex == 1 ? myColors[0] : myColors[1]),
+                  Text(
+                    "Пошук",
+                    style: TextStyle(
+                        color: currentIndex == 1 ? myColors[0] : myColors[1]),
+                  ),
+                ],
+              ),
+            ),
+            label: '',
           ),
         ],
-        currentIndex: currentPageIndex,
-        selectedItemColor: Colors.white,
-        unselectedItemColor: const Color(0xFF757575),
-        onTap: onDestinationSelected,
+        currentIndex: currentIndex,
+        onTap: (index) {
+          tabController.animateTo(index);
+        },
       ),
     );
   }
