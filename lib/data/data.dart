@@ -35,24 +35,28 @@ Json data = {
   ],
   'onlyAudio': [
     {
+      "id": "1",
       'img': 'assets/img/duna.jpg',
       'title': 'Дюна',
       'secondSubTitle': 'МАКСИМАЛЬНА',
       'color': Colors.deepOrangeAccent,
     },
     {
+      "id": "2",
       'img': 'assets/img/1984.jpg',
       'title': '1984',
       'secondSubTitle': 'ПОКУПКА',
       'color': Color(0xFF00B2B2),
     },
     {
+      "id": "3",
       'img': 'assets/img/tigrolovy.jpg',
       'title': 'Тигролови',
       'secondSubTitle': 'БЕЗКОШТОВНО',
       'color': Color(0xFF979797),
     },
     {
+      "id": "4",
       'img': 'assets/img/neverStop.jpg',
       'title': 'Never Stop',
       'secondSubTitle': 'МАКСИМАЛЬНА',

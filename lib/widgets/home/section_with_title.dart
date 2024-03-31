@@ -7,15 +7,18 @@ Widget sectionWithTitle({
   required String title,
   required String type,
   required dynamic data,
+  required int trackIndex,
+  required Function changeTrackIndex,
 }) {
   return Column(
     crossAxisAlignment: CrossAxisAlignment.start,
     children: <Widget>[
       TitleBlock(title: title),
       CardsScrollSide(
-        type: type,
-        data: data,
-      ),
+          type: type,
+          data: data,
+          trackIndex: trackIndex,
+          changeTrackIndex: changeTrackIndex),
     ],
   );
 }

@@ -5,10 +5,23 @@ import '../../data/data.dart';
 import '../app_bar.dart';
 import 'main_cards_block.dart';
 
-class HomePageWidget extends StatelessWidget {
+class HomePageWidget extends StatefulWidget {
   const HomePageWidget({
     super.key,
   });
+
+  @override
+  State<HomePageWidget> createState() => _HomePageWidgetState();
+}
+
+class _HomePageWidgetState extends State<HomePageWidget> {
+  int _trackIndex = 0;
+
+  void changeTrackIndex(int newIndex) {
+    setState(() {
+      _trackIndex = newIndex;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -29,10 +42,11 @@ class HomePageWidget extends StatelessWidget {
     return Column(
       children: sections.map((section) {
         return sectionWithTitle(
-          title: section['title'],
-          type: section['type'],
-          data: section['data'],
-        );
+            title: section['title'],
+            type: section['type'],
+            data: section['data'],
+            trackIndex: _trackIndex,
+            changeTrackIndex: changeTrackIndex);
       }).toList(),
     );
   }

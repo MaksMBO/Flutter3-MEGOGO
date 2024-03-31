@@ -7,17 +7,21 @@ typedef Json = Map<String, dynamic>;
 class CardsScrollSide extends StatelessWidget {
   final List<Map<String, dynamic>> data;
   final String type;
+  final int trackIndex;
+  final Function changeTrackIndex;
 
   const CardsScrollSide({
     super.key,
     required this.type,
     required this.data,
+    required this.trackIndex,
+    required this.changeTrackIndex,
   });
 
   @override
   Widget build(BuildContext context) {
-    late final double defaultHeight;
-    late final double defaultWidth;
+    late double defaultHeight;
+    late double defaultWidth;
     double tempWidth = MediaQuery.of(context).size.width;
     double tempHeight = MediaQuery.of(context).size.height;
 
@@ -34,6 +38,10 @@ class CardsScrollSide extends StatelessWidget {
         defaultHeight = tempWidth > 450 ? tempHeight * 0.6 : tempHeight * 0.30;
         defaultWidth = tempWidth > 450 ? tempWidth * 0.17 : tempWidth * 0.33;
         break;
+      default:
+        defaultHeight = 0;
+        defaultWidth = 0;
+        break;
     }
 
     return SizedBox(
@@ -49,8 +57,14 @@ class CardsScrollSide extends StatelessWidget {
               left: index == 0 ? 16.0 : 0,
               right: index == data.length - 1 ? 16.0 : 0,
             ),
-            child:
-                OneCard(defaultWidth: defaultWidth, data: data, index: index),
+            child: OneCard(
+              defaultWidth: defaultWidth,
+              data: data,
+              index: index,
+              isAudio: type == "onlyAudio" ? true : false,
+              trackIndex: trackIndex,
+              changeTrackIndex: changeTrackIndex,
+            ),
           );
         },
       ),
