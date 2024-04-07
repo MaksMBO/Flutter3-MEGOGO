@@ -65,37 +65,56 @@ Json data = {
   ],
   'films': [
     {
+      'id': 1,
       'img': 'assets/img/OPENGAMER.jpg',
       'secondSubTitle': 'МАКСИМАЛЬНА',
       'color': Colors.deepOrangeAccent,
     },
     {
+      'id': 2,
       'img': 'assets/img/duna.jpg',
       'secondSubTitle': 'ПОКУПКА',
       'color': Color(0xFF00B2B2),
     },
     {
+      'id': 3,
       'img': 'assets/img/gentlemen.jpg',
       'secondSubTitle': 'БЕЗКОШТОВНО',
       'color': Color(0xFF979797),
     },
     {
+      'id': 4,
       'img': 'assets/img/johnWick.jpg',
       'secondSubTitle': 'МАКСИМАЛЬНА',
       'color': Colors.deepOrangeAccent,
     },
     {
+      'id': 5,
       'img': 'assets/img/deadpool.png',
       'secondSubTitle': 'МАКСИМАЛЬНА',
       'color': Colors.deepOrangeAccent,
     },
     {
+      'id': 6,
       'img': 'assets/img/soprano.jpg',
       'secondSubTitle': 'МАКСИМАЛЬНА',
       'color': Colors.deepOrangeAccent,
     },
     {
+      'id': 7,
       'img': 'assets/img/barbie.jpg',
+      'secondSubTitle': 'МАКСИМАЛЬНА',
+      'color': Colors.deepOrangeAccent,
+    },
+    {
+      'id': 8,
+      'img': 'assets/img/res-dogs.jpg',
+      'secondSubTitle': 'МАКСИМАЛЬНА',
+      'color': Colors.deepOrangeAccent,
+    },
+    {
+      'id': 9,
+      'img': 'assets/img/usual.jpg',
       'secondSubTitle': 'МАКСИМАЛЬНА',
       'color': Colors.deepOrangeAccent,
     },

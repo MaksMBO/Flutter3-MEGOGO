@@ -14,18 +14,23 @@ class SearchContent extends StatelessWidget {
       padding: const EdgeInsets.only(bottom: 8.0),
       child: Column(
         children: List.generate(
-          7,
-          (index) {
+          (sections[1]['data'].length / 3).ceil(),
+              (index) {
             return Padding(
               padding: const EdgeInsets.only(bottom: 8.0),
               child: Row(
                 children: List.generate(3, (innerIndex) {
-                  return Expanded(
-                    child: SearchCard(
-                      data: sections[1]['data'],
-                      index: 0,
-                    ),
-                  );
+                  int dataIndex = index * 3 + innerIndex;
+                  if (dataIndex < sections[1]['data'].length) {
+                    return Expanded(
+                      child: SearchCard(
+                        data: sections[1]['data'],
+                        index: dataIndex,
+                      ),
+                    );
+                  } else {
+                    return const SizedBox();
+                  }
                 }),
               ),
             );

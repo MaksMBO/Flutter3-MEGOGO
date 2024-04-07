@@ -1,31 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
-class SearchCard extends StatefulWidget {
-  const SearchCard({Key? key, required this.data, required this.index})
-      : super(key: key);
+import '../../models/liked_list_model.dart';
+
+class SearchCard extends StatelessWidget {
+  const SearchCard({super.key, required this.data, required this.index});
 
   final List<Map<String, dynamic>> data;
   final int index;
 
   @override
-  _SearchCardState createState() => _SearchCardState();
-}
-
-class _SearchCardState extends State<SearchCard> {
-  bool _switchValue = false;
-
-  final MaterialStateProperty<Color?> trackColor =
-  MaterialStateProperty.resolveWith<Color?>(
-        (Set<MaterialState> states) {
-      if (states.contains(MaterialState.selected)) {
-        return const Color(0xff66ad92);
-      }
-      return null;
-    },
-  );
-
-  @override
   Widget build(BuildContext context) {
+    final movie = Movie(
+      id: index,
+      img: data[index]['img'],
+      secondSubTitle: data[index]['secondSubTitle'],
+      color: data[index]['color'],
+    );
+
     return Card(
       color: Colors.black,
       child: SizedBox(
@@ -33,29 +25,30 @@ class _SearchCardState extends State<SearchCard> {
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            _buildImage(),
+            _buildImage(movie, context),
             const SizedBox(height: 8),
-            _buildTitle(),
-            _buildFirstSubTitle(),
-            _buildSecondSubTitle(),
-            _buildSwitch(),
+            _buildTitle(data, index),
+            _buildFirstSubTitle(data, index),
+            _buildSecondSubTitle(movie),
+            _buildSwitch(movie),
           ],
         ),
       ),
     );
   }
 
-  Widget _buildImage() {
+  Widget _buildImage(Movie movie, BuildContext context) {
     return Image.asset(
-      widget.data[widget.index]['img'],
+      movie.img,
+      height: MediaQuery.of(context).size.height * 0.23,
       fit: BoxFit.cover,
     );
   }
 
-  Widget _buildTitle() {
-    if (widget.data[widget.index]['title'] != null) {
+  Widget _buildTitle(List<Map<String, dynamic>> data, int index) {
+    if (data[index]['title'] != null) {
       return Text(
-        widget.data[widget.index]['title'],
+        data[index]['title'],
         maxLines: 1,
         overflow: TextOverflow.ellipsis,
         style: const TextStyle(
@@ -69,10 +62,10 @@ class _SearchCardState extends State<SearchCard> {
     }
   }
 
-  Widget _buildFirstSubTitle() {
-    if (widget.data[widget.index]['firstSubTitle'] != null) {
+  Widget _buildFirstSubTitle(List<Map<String, dynamic>> data, int index) {
+    if (data[index]['firstSubTitle'] != null) {
       return Text(
-        widget.data[widget.index]['firstSubTitle'],
+        data[index]['firstSubTitle'],
         maxLines: 1,
         overflow: TextOverflow.ellipsis,
         style: const TextStyle(
@@ -85,14 +78,14 @@ class _SearchCardState extends State<SearchCard> {
     }
   }
 
-  Widget _buildSecondSubTitle() {
-    if (widget.data[widget.index]['secondSubTitle'] != null) {
+  Widget _buildSecondSubTitle(Movie movie) {
+    if (movie.secondSubTitle != null) {
       return Text(
-        widget.data[widget.index]['secondSubTitle'],
+        movie.secondSubTitle!,
         maxLines: 1,
         overflow: TextOverflow.ellipsis,
         style: TextStyle(
-          color: widget.data[widget.index]['color'],
+          color: movie.color,
           fontSize: 11,
           fontWeight: FontWeight.w600,
         ),
@@ -102,7 +95,7 @@ class _SearchCardState extends State<SearchCard> {
     }
   }
 
-  Widget _buildSwitch() {
+  Widget _buildSwitch(Movie movie) {
     return Padding(
       padding: const EdgeInsets.only(top: 8.0),
       child: Column(
@@ -117,13 +110,18 @@ class _SearchCardState extends State<SearchCard> {
               fontWeight: FontWeight.w300,
             ),
           ),
-          Switch(
-            value: _switchValue,
-            trackColor: trackColor,
-            onChanged: (value) {
-              setState(() {
-                _switchValue = value;
-              });
+          Consumer<LikedListModel>(
+            builder: (context, likedList, child) {
+              return Switch(
+                value: likedList.movies.contains(movie),
+                onChanged: (value) {
+                  if (value) {
+                    likedList.addMovie(movie);
+                  } else {
+                    likedList.removeMovie(movie);
+                  }
+                },
+              );
             },
           ),
         ],
