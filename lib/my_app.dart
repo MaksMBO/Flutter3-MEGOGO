@@ -28,7 +28,7 @@ class MyApp extends StatelessWidget {
           child: MaterialApp(
             title: 'Flutter Demo',
             theme: myTheme,
-            home: Megogo(),
+            home: const Megogo(),
             debugShowCheckedModeBanner: false,
           ),
         );

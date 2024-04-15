@@ -30,7 +30,7 @@ class ContentPage extends StatelessWidget {
           return Padding(
             padding:
                 const EdgeInsets.symmetric(horizontal: 20.0, vertical: 30.0),
-            child: OUtputFilms(movies: snapshot.data!),
+            child: OutputFilms(movies: snapshot.data!),
           );
         }
       },

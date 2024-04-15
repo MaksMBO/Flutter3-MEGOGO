@@ -4,10 +4,10 @@ import 'package:cached_network_image/cached_network_image.dart';
 import '../models/movie.dart';
 import 'api_config.dart';
 
-class OUtputFilms extends StatelessWidget {
+class OutputFilms extends StatelessWidget {
   final List<Movie> movies;
 
-  const OUtputFilms({super.key, required this.movies});
+  const OutputFilms({super.key, required this.movies});
 
   @override
   Widget build(BuildContext context) {
