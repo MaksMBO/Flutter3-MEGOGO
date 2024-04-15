@@ -1,5 +1,4 @@
 import '../api/api_config.dart';
-import '../api/get_films.dart';
 
 class ApiConstants {
   static String popularMovies =

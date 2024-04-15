@@ -15,7 +15,7 @@ class SearchContent extends StatelessWidget {
       child: Column(
         children: List.generate(
           (sections[1]['data'].length / 3).ceil(),
-              (index) {
+          (index) {
             return Padding(
               padding: const EdgeInsets.only(bottom: 8.0),
               child: Row(

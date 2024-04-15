@@ -27,7 +27,9 @@ class CustomDrawer extends StatelessWidget {
               child: Text(
                 'Транслювати на...',
                 textAlign: TextAlign.center,
-                style: TextStyle(fontSize: 20,),
+                style: TextStyle(
+                  fontSize: 20,
+                ),
               ),
             ),
           ),

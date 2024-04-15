@@ -32,8 +32,3 @@ class MainCardBlock extends StatelessWidget {
     );
   }
 }
-
-
-
-
-

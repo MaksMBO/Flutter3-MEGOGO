@@ -27,7 +27,6 @@ class CardContent extends StatelessWidget {
             maxLines: 1,
             overflow: TextOverflow.ellipsis,
             style: const TextStyle(
-              // color: Colors.white,
               fontSize: 14,
               fontWeight: FontWeight.w500,
             ),
@@ -38,7 +37,6 @@ class CardContent extends StatelessWidget {
             maxLines: 1,
             overflow: TextOverflow.ellipsis,
             style: const TextStyle(
-              // color: Colors.white38,
               fontSize: 11,
             ),
           ),

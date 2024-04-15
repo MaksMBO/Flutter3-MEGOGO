@@ -27,12 +27,11 @@ class Movie {
   @override
   int get hashCode {
     return id.hashCode ^
-    img.hashCode ^
-    secondSubTitle.hashCode ^
-    color.hashCode;
+        img.hashCode ^
+        secondSubTitle.hashCode ^
+        color.hashCode;
   }
 }
-
 
 class LikedListModel with ChangeNotifier {
   final List<Movie> _movies = [];
@@ -56,4 +55,3 @@ class LikedListModel with ChangeNotifier {
     notifyListeners();
   }
 }
-

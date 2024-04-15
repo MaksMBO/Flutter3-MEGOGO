@@ -19,7 +19,6 @@ class ContentPage extends StatelessWidget {
       future: fetchMovies(endpoint),
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
-          print(snapshot);
           return const Center(
             child: CircularProgressIndicator(),
           );

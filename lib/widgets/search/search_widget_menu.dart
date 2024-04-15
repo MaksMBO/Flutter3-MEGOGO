@@ -31,9 +31,7 @@ class _SearchWidgetMenuState extends State<SearchWidgetMenu> {
             ? const Color(0x59515152)
             : const Color(0x59DADADA);
         Color textColor =
-            state == ThemeState.dark ?
-            Colors.white :
-            const Color(0xFF9B9B9B);
+            state == ThemeState.dark ? Colors.white : const Color(0xFF9B9B9B);
 
         return Container(
           height: 50,

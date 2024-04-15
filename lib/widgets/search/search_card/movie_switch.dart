@@ -19,7 +19,6 @@ class MovieSwitch extends StatelessWidget {
           const Text(
             "В уподобане",
             style: TextStyle(
-              // color: Colors.white,
               fontSize: 12,
               fontWeight: FontWeight.w300,
             ),

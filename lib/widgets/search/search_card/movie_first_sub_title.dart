@@ -1,7 +1,8 @@
 import 'package:flutter/cupertino.dart';
 
 class MovieFirstSubTitle extends StatelessWidget {
-  const MovieFirstSubTitle({super.key, required this.data, required this.index});
+  const MovieFirstSubTitle(
+      {super.key, required this.data, required this.index});
 
   final List<Map<String, dynamic>> data;
   final int index;
@@ -14,7 +15,6 @@ class MovieFirstSubTitle extends StatelessWidget {
         maxLines: 1,
         overflow: TextOverflow.ellipsis,
         style: const TextStyle(
-          // color: Colors.white38,
           fontSize: 11,
         ),
       );

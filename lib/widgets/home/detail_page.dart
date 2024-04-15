@@ -11,10 +11,7 @@ class DetailPage extends StatelessWidget {
       appBar: AppBar(
         title: Text(
           data['title'],
-          // style: const TextStyle(color: Colors.white),
         ),
-        // backgroundColor: const Color(0xb0343434),
-        // iconTheme: const IconThemeData(color: Colors.white),
       ),
       body: Center(
         child: Column(
@@ -37,7 +34,6 @@ class DetailPage extends StatelessWidget {
               style: const TextStyle(
                 fontSize: 24,
                 fontWeight: FontWeight.bold,
-                // color: Colors.white,
               ),
             ),
             const SizedBox(height: 10),
@@ -48,7 +44,6 @@ class DetailPage extends StatelessWidget {
                 style: const TextStyle(
                   fontSize: 16,
                   fontWeight: FontWeight.normal,
-                  // color: Color(0x90ffffff),
                 ),
               ),
             )

@@ -34,7 +34,6 @@ class _HomePageWidgetState extends State<HomePageWidget> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
-              // const LogoBar(),
               const MainCardBlock(),
               SectionsWidget(
                   sections: sections,
@@ -64,7 +63,6 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                     color: state == ThemeState.dark
                         ? const Color(0xFFBCD4FF)
                         : const Color(0xFF96BBFA),
-                    // color: Colors.cyan,0x00BCD4FF
                   ),
                 ),
               ),

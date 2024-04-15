@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:task2/widgets/home/card/card_content.dart';
 import 'package:task2/widgets/home/play_button.dart';
 
-
 import 'card_image.dart';
 
 class OneCard extends StatelessWidget {
@@ -44,16 +43,13 @@ class OneCard extends StatelessWidget {
             if (isAudio)
               PlayButton(
                 onPressed: () {
-                  if (int.parse(data[index]['id']) ==
-                      trackIndex) {
+                  if (int.parse(data[index]['id']) == trackIndex) {
                     changeTrackIndex(0);
                   } else {
-                    changeTrackIndex(
-                        int.parse(data[index]['id']));
+                    changeTrackIndex(int.parse(data[index]['id']));
                   }
                 },
-                isPlaying: int.parse(data[index]['id']) ==
-                    trackIndex,
+                isPlaying: int.parse(data[index]['id']) == trackIndex,
               ),
             CardContent(
               title: data[index]['title'] ?? "",

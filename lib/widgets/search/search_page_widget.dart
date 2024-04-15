@@ -26,7 +26,6 @@ class SearchWidget extends StatelessWidget {
                     style: TextStyle(
                       fontSize: 20,
                       fontWeight: FontWeight.w700,
-                      // color: Colors.white,
                     ),
                   ),
                 ),
@@ -47,7 +46,6 @@ class SearchWidget extends StatelessWidget {
                 onPressed: () {},
                 child: const Icon(
                   Icons.mic,
-                  // color: Colors.white,
                 ),
               ),
             );

@@ -18,7 +18,6 @@ class TitleBlock extends StatelessWidget {
               child: Text(
                 title,
                 style: const TextStyle(
-                  // color: Colors.white,
                   fontWeight: FontWeight.w600,
                   fontSize: 20,
                 ),

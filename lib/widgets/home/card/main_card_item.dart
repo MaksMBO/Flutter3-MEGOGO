@@ -3,7 +3,6 @@ import 'package:task2/widgets/home/card/main_card.dart';
 
 import '../detail_page.dart';
 
-
 class MainCardItem extends StatelessWidget {
   final Map<String, dynamic> data;
   final EdgeInsets padding;
