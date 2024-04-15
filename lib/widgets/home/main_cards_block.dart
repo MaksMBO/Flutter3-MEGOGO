@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../data/data.dart';
-import 'card_column.dart';
+import 'card/card_column.dart';
 
 class MainCardBlock extends StatelessWidget {
   const MainCardBlock({super.key});

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../data/data.dart';
+import '../../cubits/theme_cubit.dart';
+import 'navigation_barItem_builder.dart';
 
 class MyNavigationBarTheme extends StatelessWidget {
   final TabController tabController;
@@ -23,46 +25,45 @@ class MyNavigationBarTheme extends StatelessWidget {
           unselectedLabelStyle: TextStyle(fontSize: 0),
         ),
       ),
-      child: BottomNavigationBar(
-        type: BottomNavigationBarType.fixed,
-        backgroundColor: const Color(0xFF1A1A1A),
-        items: <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: SizedBox(
-              child: Column(
-                children: [
-                  Icon(Icons.home,
-                      color: currentIndex == 0 ? myColors[0] : myColors[1]),
-                  Text(
-                    "Головна",
-                    style: TextStyle(
-                        color: currentIndex == 0 ? myColors[0] : myColors[1]),
-                  ),
-                ],
-              ),
-            ),
-            label: '',
-          ),
-          BottomNavigationBarItem(
-            icon: SizedBox(
-              child: Column(
-                children: [
-                  Icon(Icons.search,
-                      color: currentIndex == 1 ? myColors[0] : myColors[1]),
-                  Text(
-                    "Пошук",
-                    style: TextStyle(
-                        color: currentIndex == 1 ? myColors[0] : myColors[1]),
-                  ),
-                ],
-              ),
-            ),
-            label: '',
-          ),
-        ],
-        currentIndex: currentIndex,
-        onTap: (index) {
-          tabController.animateTo(index);
+      child: BlocBuilder<ThemeCubit, ThemeState>(
+        builder: (context, state) {
+          return BottomNavigationBar(
+            type: BottomNavigationBarType.fixed,
+            items: <BottomNavigationBarItem>[
+              NavigationBarItemBuilder(
+                icon: Icons.home,
+                title: "Головна",
+                index: 0,
+                currentIndex: currentIndex,
+                state: state,
+              ).build(),
+              NavigationBarItemBuilder(
+                icon: Icons.search,
+                title: "Пошук",
+                index: 1,
+                currentIndex: currentIndex,
+                state: state,
+              ).build(),
+              NavigationBarItemBuilder(
+                icon: Icons.movie_creation,
+                title: "Популярне",
+                index: 2,
+                currentIndex: currentIndex,
+                state: state,
+              ).build(),
+              NavigationBarItemBuilder(
+                icon: Icons.settings,
+                title: "Налаштування",
+                index: 3,
+                currentIndex: currentIndex,
+                state: state,
+              ).build(),
+            ],
+            currentIndex: currentIndex,
+            onTap: (index) {
+              tabController.animateTo(index);
+            },
+          );
         },
       ),
     );

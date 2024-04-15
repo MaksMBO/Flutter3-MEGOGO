@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../../cubits/theme_cubit.dart';
 
 class SearchWidgetMenu extends StatefulWidget {
   const SearchWidgetMenu({super.key});
@@ -22,22 +25,34 @@ class _SearchWidgetMenuState extends State<SearchWidgetMenu> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 50,
-      decoration: BoxDecoration(
-        color: const Color(0x59515152),
-        borderRadius: BorderRadius.circular(8),
-      ),
-      child: TextField(
-        controller: _controller,
-        style: const TextStyle(color: Colors.white),
-        decoration: const InputDecoration(
-          hintText: 'Пошук',
-          hintStyle: TextStyle(color: Colors.white),
-          prefixIcon: Icon(Icons.search, color: Colors.white),
-          border: InputBorder.none,
-        ),
-      ),
+    return BlocBuilder<ThemeCubit, ThemeState>(
+      builder: (context, state) {
+        Color backgroundColor = state == ThemeState.dark
+            ? const Color(0x59515152)
+            : const Color(0x59DADADA);
+        Color textColor =
+            state == ThemeState.dark ?
+            Colors.white :
+            const Color(0xFF9B9B9B);
+
+        return Container(
+          height: 50,
+          decoration: BoxDecoration(
+            color: backgroundColor,
+            borderRadius: BorderRadius.circular(8),
+          ),
+          child: TextField(
+            controller: _controller,
+            style: TextStyle(color: textColor),
+            decoration: InputDecoration(
+              hintText: 'Пошук',
+              hintStyle: TextStyle(color: textColor),
+              prefixIcon: Icon(Icons.search, color: textColor),
+              border: InputBorder.none,
+            ),
+          ),
+        );
+      },
     );
   }
 

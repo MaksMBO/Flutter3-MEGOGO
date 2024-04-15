@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:task2/widgets/home/card/card_content.dart';
 import 'package:task2/widgets/home/play_button.dart';
 
-import 'card_content.dart';
+
 import 'card_image.dart';
 
 class OneCard extends StatelessWidget {
@@ -25,7 +26,11 @@ class OneCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      color: Colors.black,
+      color: const Color.fromRGBO(0, 0, 0, 0.0),
+      elevation: 0,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.zero,
+      ),
       child: SizedBox(
         width: defaultWidth,
         child: Column(

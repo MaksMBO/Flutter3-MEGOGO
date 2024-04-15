@@ -19,26 +19,20 @@ class CustomDrawer extends StatelessWidget {
 
     return Drawer(
       width: MediaQuery.of(context).size.width,
-      child: Container(
-        color: const Color.fromRGBO(255, 255, 255, 0.7),
-        child: ListView(
-          padding: EdgeInsets.zero,
-          children: <Widget>[
-            const DrawerHeader(
-              decoration: BoxDecoration(
-                color: Colors.black,
-              ),
-              child: Center(
-                child: Text(
-                  'Транслювати на...',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(fontSize: 20, color: Colors.white),
-                ),
+      child: ListView(
+        padding: EdgeInsets.zero,
+        children: <Widget>[
+          const DrawerHeader(
+            child: Center(
+              child: Text(
+                'Транслювати на...',
+                textAlign: TextAlign.center,
+                style: TextStyle(fontSize: 20,),
               ),
             ),
-            ...drawerItems,
-          ],
-        ),
+          ),
+          ...drawerItems,
+        ],
       ),
     );
   }

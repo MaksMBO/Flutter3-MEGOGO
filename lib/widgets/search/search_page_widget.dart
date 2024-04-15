@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:task2/widgets/search/search_content.dart';
 import 'package:task2/widgets/search/search_widget_menu.dart';
+
+import '../../cubits/theme_cubit.dart';
 
 class SearchWidget extends StatelessWidget {
   const SearchWidget({super.key});
@@ -23,7 +26,7 @@ class SearchWidget extends StatelessWidget {
                     style: TextStyle(
                       fontSize: 20,
                       fontWeight: FontWeight.w700,
-                      color: Colors.white,
+                      // color: Colors.white,
                     ),
                   ),
                 ),
@@ -32,17 +35,23 @@ class SearchWidget extends StatelessWidget {
             ),
           ),
         ),
-        Positioned(
-          bottom: 16.0,
-          right: 16.0,
-          child: FloatingActionButton(
-            backgroundColor: const Color(0xff313131),
-            onPressed: () {},
-            child: const Icon(
-              Icons.mic,
-              color: Colors.white,
-            ),
-          ),
+        BlocBuilder<ThemeCubit, ThemeState>(
+          builder: (context, state) {
+            return Positioned(
+              bottom: 16.0,
+              right: 16.0,
+              child: FloatingActionButton(
+                backgroundColor: state == ThemeState.dark
+                    ? const Color(0xff313131)
+                    : const Color(0xFFDADADA),
+                onPressed: () {},
+                child: const Icon(
+                  Icons.mic,
+                  // color: Colors.white,
+                ),
+              ),
+            );
+          },
         ),
       ],
     );

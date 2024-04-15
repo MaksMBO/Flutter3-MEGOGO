@@ -16,14 +16,14 @@ Json data = {
       'title': 'Т/с "Доктор Хаус", 3 сезон, 12 с.',
       'firstSubTitle': 'Сьогодні, 11:00',
       'secondSubTitle': 'ПОКУПКА',
-      'color': Color(0xFF00B2B2),
+      'color': const Color(0xFF00B2B2),
     },
     {
       'img': 'assets/img/griminalMinds.jpg',
       'title': 'Т/с "Мислити як вбивця"',
       'firstSubTitle': 'Сьогодні, 11:00',
       'secondSubTitle': 'БЕЗКОШТОВНО',
-      'color': Color(0xFF979797),
+      'color': const Color(0xFF979797),
     },
     {
       'img': 'assets/img/bbt.jpg',
@@ -46,14 +46,14 @@ Json data = {
       'img': 'assets/img/1984.jpg',
       'title': '1984',
       'secondSubTitle': 'ПОКУПКА',
-      'color': Color(0xFF00B2B2),
+      'color': const Color(0xFF00B2B2),
     },
     {
       "id": "3",
       'img': 'assets/img/tigrolovy.jpg',
       'title': 'Тигролови',
       'secondSubTitle': 'БЕЗКОШТОВНО',
-      'color': Color(0xFF979797),
+      'color': const Color(0xFF979797),
     },
     {
       "id": "4",
@@ -74,13 +74,13 @@ Json data = {
       'id': 2,
       'img': 'assets/img/duna.jpg',
       'secondSubTitle': 'ПОКУПКА',
-      'color': Color(0xFF00B2B2),
+      'color': const Color(0xFF00B2B2),
     },
     {
       'id': 3,
       'img': 'assets/img/gentlemen.jpg',
       'secondSubTitle': 'БЕЗКОШТОВНО',
-      'color': Color(0xFF979797),
+      'color': const Color(0xFF979797),
     },
     {
       'id': 4,
@@ -198,4 +198,4 @@ final List<Json> items = [
   {'title': 'BT-456 [ChromeCast]'},
 ];
 
-const List<Color> myColors = [Colors.white, Color(0xFF757575)];
+const List<Color> myColors = [Colors.white, Color(0xFF757575), Colors.black];

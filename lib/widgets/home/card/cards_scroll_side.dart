@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-
-import 'one_card.dart';
+import 'package:task2/widgets/home/card/one_card.dart';
 
 typedef Json = Map<String, dynamic>;
 

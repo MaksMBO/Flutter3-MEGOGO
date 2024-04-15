@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+import 'package:task2/widgets/search/search_card/movie_first_sub_title.dart';
+import 'package:task2/widgets/search/search_card/movie_image.dart';
+import 'package:task2/widgets/search/search_card/movie_second_sub_title.dart';
+import 'package:task2/widgets/search/search_card/movie_switch.dart';
+import 'package:task2/widgets/search/search_card/movie_title.dart';
 
 import '../../models/liked_list_model.dart';
 
@@ -19,112 +23,24 @@ class SearchCard extends StatelessWidget {
     );
 
     return Card(
-      color: Colors.black,
+      color: const Color.fromRGBO(0, 0, 0, 0.0),
+      elevation: 0,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.zero,
+      ),
       child: SizedBox(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            _buildImage(movie, context),
+            MovieImage(movie: movie, context: context),
             const SizedBox(height: 8),
-            _buildTitle(data, index),
-            _buildFirstSubTitle(data, index),
-            _buildSecondSubTitle(movie),
-            _buildSwitch(movie),
+            MovieTitle(data: data, index: index),
+            MovieFirstSubTitle(data: data, index: index),
+            MovieSecondSubTitle(movie: movie),
+            MovieSwitch(movie: movie),
           ],
         ),
-      ),
-    );
-  }
-
-  Widget _buildImage(Movie movie, BuildContext context) {
-    return Image.asset(
-      movie.img,
-      height: MediaQuery.of(context).size.height * 0.23,
-      fit: BoxFit.cover,
-    );
-  }
-
-  Widget _buildTitle(List<Map<String, dynamic>> data, int index) {
-    if (data[index]['title'] != null) {
-      return Text(
-        data[index]['title'],
-        maxLines: 1,
-        overflow: TextOverflow.ellipsis,
-        style: const TextStyle(
-          color: Colors.white,
-          fontSize: 14,
-          fontWeight: FontWeight.w500,
-        ),
-      );
-    } else {
-      return const SizedBox();
-    }
-  }
-
-  Widget _buildFirstSubTitle(List<Map<String, dynamic>> data, int index) {
-    if (data[index]['firstSubTitle'] != null) {
-      return Text(
-        data[index]['firstSubTitle'],
-        maxLines: 1,
-        overflow: TextOverflow.ellipsis,
-        style: const TextStyle(
-          color: Colors.white38,
-          fontSize: 11,
-        ),
-      );
-    } else {
-      return const SizedBox();
-    }
-  }
-
-  Widget _buildSecondSubTitle(Movie movie) {
-    if (movie.secondSubTitle != null) {
-      return Text(
-        movie.secondSubTitle!,
-        maxLines: 1,
-        overflow: TextOverflow.ellipsis,
-        style: TextStyle(
-          color: movie.color,
-          fontSize: 11,
-          fontWeight: FontWeight.w600,
-        ),
-      );
-    } else {
-      return const SizedBox();
-    }
-  }
-
-  Widget _buildSwitch(Movie movie) {
-    return Padding(
-      padding: const EdgeInsets.only(top: 8.0),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisAlignment: MainAxisAlignment.start,
-        children: [
-          const Text(
-            "В уподобане",
-            style: TextStyle(
-              color: Colors.white,
-              fontSize: 12,
-              fontWeight: FontWeight.w300,
-            ),
-          ),
-          Consumer<LikedListModel>(
-            builder: (context, likedList, child) {
-              return Switch(
-                value: likedList.movies.contains(movie),
-                onChanged: (value) {
-                  if (value) {
-                    likedList.addMovie(movie);
-                  } else {
-                    likedList.removeMovie(movie);
-                  }
-                },
-              );
-            },
-          ),
-        ],
       ),
     );
   }
