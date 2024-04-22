@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:task2/screens/home_screen.dart';
+import 'package:task2/screens/info_screen.dart';
 
 import 'cubits/theme_cubit.dart';
 
@@ -24,6 +25,7 @@ class Megogo extends StatelessWidget {
           initialRoute: '/',
           routes: {
             '/': (context) => const HomeScreen(),
+            '/info': (context) => const InfoScreen(),
           },
         );
       },

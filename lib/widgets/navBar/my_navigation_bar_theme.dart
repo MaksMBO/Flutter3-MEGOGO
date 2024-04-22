@@ -5,13 +5,14 @@ import '../../cubits/theme_cubit.dart';
 import 'navigation_barItem_builder.dart';
 
 class MyNavigationBarTheme extends StatelessWidget {
-  final TabController tabController;
-  final int currentIndex;
+  final int selectedIndex;
+
+  final dynamic onItemTapped;
 
   const MyNavigationBarTheme({
     super.key,
-    required this.tabController,
-    required this.currentIndex,
+    required this.selectedIndex,
+    required this.onItemTapped,
   });
 
   @override
@@ -34,35 +35,33 @@ class MyNavigationBarTheme extends StatelessWidget {
                 icon: Icons.home,
                 title: "Головна",
                 index: 0,
-                currentIndex: currentIndex,
+                currentIndex: selectedIndex,
                 state: state,
               ).build(),
               NavigationBarItemBuilder(
                 icon: Icons.search,
                 title: "Пошук",
                 index: 1,
-                currentIndex: currentIndex,
+                currentIndex: selectedIndex,
                 state: state,
               ).build(),
               NavigationBarItemBuilder(
                 icon: Icons.movie_creation,
                 title: "Популярне",
                 index: 2,
-                currentIndex: currentIndex,
+                currentIndex: selectedIndex,
                 state: state,
               ).build(),
               NavigationBarItemBuilder(
                 icon: Icons.settings,
                 title: "Налаштування",
                 index: 3,
-                currentIndex: currentIndex,
+                currentIndex: selectedIndex,
                 state: state,
               ).build(),
             ],
-            currentIndex: currentIndex,
-            onTap: (index) {
-              tabController.animateTo(index);
-            },
+            currentIndex: selectedIndex,
+            onTap: onItemTapped,
           );
         },
       ),

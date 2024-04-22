@@ -1,20 +1,9 @@
 import 'package:animated_theme_switcher/animated_theme_switcher.dart';
 import 'package:flutter/material.dart';
 
-import '../widgets/home/home_page_widget.dart';
-import '../widgets/movie/movie_explorer.dart';
 import '../widgets/my_drawer.dart';
 import '../widgets/navBar/my_navigation_bar_theme.dart';
-import '../widgets/search/search_page_widget.dart';
-import '../widgets/settings/settings.dart';
-
-final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
-const page = [
-  HomePageWidget(),
-  SearchWidget(),
-  MovieExplorerHomePage(),
-  SettingsWidget(),
-];
+import '../widgets/navBar/offstage_navigator.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -25,24 +14,20 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen>
     with SingleTickerProviderStateMixin {
-  late TabController _tabController;
-  int _currentIndex = 0;
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
-  @override
-  void initState() {
-    super.initState();
-    _tabController = TabController(length: 4, vsync: this);
-    _tabController.addListener(() {
-      setState(() {
-        _currentIndex = _tabController.index;
-      });
+  int _selectedIndex = 0;
+  final List<GlobalKey<NavigatorState>> _navigatorKeys = [
+    GlobalKey<NavigatorState>(),
+    GlobalKey<NavigatorState>(),
+    GlobalKey<NavigatorState>(),
+    GlobalKey<NavigatorState>(),
+  ];
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
     });
-  }
-
-  @override
-  void dispose() {
-    _tabController.dispose();
-    super.dispose();
   }
 
   @override
@@ -51,12 +36,17 @@ class _HomeScreenState extends State<HomeScreen>
       child: Scaffold(
         key: _scaffoldKey,
         appBar: AppBar(
-          title: const Text(
-            'MEGOGO',
-            style: TextStyle(
-              fontWeight: FontWeight.w800,
-              fontSize: 28,
-              letterSpacing: 8.0,
+          title: GestureDetector(
+            onTap: () {
+              Navigator.pushNamed(context, '/info');
+            },
+            child: const Text(
+              'MEGOGO',
+              style: TextStyle(
+                fontWeight: FontWeight.w800,
+                fontSize: 28,
+                letterSpacing: 8.0,
+              ),
             ),
           ),
           actions: [
@@ -73,12 +63,36 @@ class _HomeScreenState extends State<HomeScreen>
         ),
         endDrawer: const CustomDrawer(),
         bottomNavigationBar: MyNavigationBarTheme(
-          tabController: _tabController,
-          currentIndex: _currentIndex,
+          selectedIndex: _selectedIndex,
+          onItemTapped: _onItemTapped,
         ),
-        body: TabBarView(
-          controller: _tabController,
-          children: page,
+        body: Stack(
+          children: [
+            OffstageNavigator(
+              index: 0,
+              selectedIndex: _selectedIndex,
+              onItemTapped: _onItemTapped,
+              navigatorKeys: _navigatorKeys,
+            ),
+            OffstageNavigator(
+              index: 1,
+              selectedIndex: _selectedIndex,
+              onItemTapped: _onItemTapped,
+              navigatorKeys: _navigatorKeys,
+            ),
+            OffstageNavigator(
+              index: 2,
+              selectedIndex: _selectedIndex,
+              onItemTapped: _onItemTapped,
+              navigatorKeys: _navigatorKeys,
+            ),
+            OffstageNavigator(
+              index: 3,
+              selectedIndex: _selectedIndex,
+              onItemTapped: _onItemTapped,
+              navigatorKeys: _navigatorKeys,
+            ),
+          ],
         ),
       ),
     );
