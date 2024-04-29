@@ -6,7 +6,6 @@ import 'navigation_barItem_builder.dart';
 
 class MyNavigationBarTheme extends StatelessWidget {
   final int selectedIndex;
-
   final dynamic onItemTapped;
 
   const MyNavigationBarTheme({
@@ -31,28 +30,28 @@ class MyNavigationBarTheme extends StatelessWidget {
           return BottomNavigationBar(
             type: BottomNavigationBarType.fixed,
             items: <BottomNavigationBarItem>[
-              NavigationBarItemBuilder(
+              NavigationBarItem(
                 icon: Icons.home,
                 title: "Головна",
                 index: 0,
                 currentIndex: selectedIndex,
                 state: state,
               ).build(),
-              NavigationBarItemBuilder(
+              NavigationBarItem(
                 icon: Icons.search,
                 title: "Пошук",
                 index: 1,
                 currentIndex: selectedIndex,
                 state: state,
               ).build(),
-              NavigationBarItemBuilder(
+              NavigationBarItem(
                 icon: Icons.movie_creation,
                 title: "Популярне",
                 index: 2,
                 currentIndex: selectedIndex,
                 state: state,
               ).build(),
-              NavigationBarItemBuilder(
+              NavigationBarItem(
                 icon: Icons.settings,
                 title: "Налаштування",
                 index: 3,

@@ -3,14 +3,14 @@ import 'package:flutter/cupertino.dart';
 import '../../cubits/theme_cubit.dart';
 import '../../data/data.dart';
 
-class NavigationBarItemBuilder {
+class NavigationBarItem {
   final IconData icon;
   final String title;
   final int index;
   final int currentIndex;
   final ThemeState state;
 
-  NavigationBarItemBuilder({
+  const NavigationBarItem({
     required this.icon,
     required this.title,
     required this.index,
